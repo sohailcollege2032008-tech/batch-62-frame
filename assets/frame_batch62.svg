@@ -1,121 +1,133 @@
 <svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Cairo:wght@600;900&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&amp;family=Cairo:wght@900&amp;family=Rakkas&amp;display=swap');
       .font-main { font-family: 'Cairo', sans-serif; font-weight: 900; }
+      .font-arabic-fancy { font-family: 'Rakkas', serif; }
       .font-sub { font-family: 'Amiri', serif; font-weight: 700; }
     </style>
-    <!-- Patterns -->
-    <pattern id="medicalPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-      <path d="M20,20 Q30,10 40,20 T60,20" stroke="#ffffff" stroke-opacity="0.05" fill="none"/>
-      <circle cx="80" cy="80" r="5" fill="#ffffff" fill-opacity="0.05"/>
-      <path d="M10,80 L20,90 M20,80 L10,90" stroke="#ffffff" stroke-opacity="0.05" />
-    </pattern>
     
-    <!-- Mask to create the hole -->
-    <mask id="circleHole">
-      <rect x="0" y="0" width="1080" height="1080" fill="white" />
-      <!-- The irregular wavy hole -->
-      <path d="M540,150 
-               Q650,150 720,220 T930,400 T980,540 T930,750 T750,930 T540,980 T330,930 T150,750 T100,540 T150,330 T360,180 T540,150" 
-            fill="black" />
-    </mask>
+    <!-- Rich Teal Gradient Background -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#0f5c6b" />
+      <stop offset="100%" stop-color="#05323b" />
+    </radialGradient>
+    
+    <!-- Gold Gradient for Metals -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6E6BC" />
+      <stop offset="25%" stop-color="#D4AF37" />
+      <stop offset="50%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA8840" />
+    </linearGradient>
 
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <!-- Pattern -->
+    <pattern id="hexPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M25,0 L50,12.5 L50,37.5 L25,50 L0,37.5 L0,12.5 Z" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.1"/>
+    </pattern>
+
+    <!-- Drop Shadow -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
     </filter>
+
+    <!-- Mask -->
+     <mask id="holeMask">
+      <rect x="0" y="0" width="1080" height="1080" fill="white" />
+      <!-- Central Hole -->
+      <circle cx="540" cy="540" r="420" fill="black" />
+    </mask>
   </defs>
 
-  <!-- Solid Background with Pattern -->
-  <rect x="0" y="0" width="1080" height="1080" fill="#064e58" mask="url(#circleHole)" />
-  <rect x="0" y="0" width="1080" height="1080" fill="url(#medicalPattern)" mask="url(#circleHole)" />
+  <!-- Background Layer -->
+  <rect width="1080" height="1080" fill="url(#bgGrad)" mask="url(#holeMask)"/>
+  <rect width="1080" height="1080" fill="url(#hexPattern)" mask="url(#holeMask)"/>
 
-  <!-- The Wavy Border (White Halo) around the hole -->
-  <path d="M540,140 
-           Q660,140 730,210 T940,390 T1000,540 T940,760 T760,940 T540,1000 T320,940 T140,760 T80,540 T140,320 T350,170 T540,140" 
-        fill="none" stroke="white" stroke-width="8" stroke-linecap="round" />
+  <!-- Ornate Border Around Hole -->
+  <circle cx="540" cy="540" r="430" fill="none" stroke="url(#goldGrad)" stroke-width="12" />
+  <circle cx="540" cy="540" r="445" fill="none" stroke="#fff" stroke-width="2" opacity="0.3" stroke-dasharray="10 5"/>
+
+  <!-- Intricate Wreaths / Side Decorations -->
+  <!-- Left Laurel -->
+  <path d="M100,540 Q100,200 540,100" fill="none" stroke="url(#goldGrad)" stroke-width="4" opacity="0.6"/>
+  <path d="M100,540 Q100,880 540,980" fill="none" stroke="url(#goldGrad)" stroke-width="4" opacity="0.6"/>
   
-  <!-- Second inner decorative stroke -->
-  <path d="M540,165
-           Q640,165 710,230 T910,410 T960,540 T910,730 T730,910 T540,955 T350,910 T170,730 T120,540 T170,410 T370,200 T540,165" 
-        fill="none" stroke="#68d8d6" stroke-width="3" stroke-dasharray="10, 10" opacity="0.8" />
+  <!-- Right Laurel -->
+  <path d="M980,540 Q980,200 540,100" fill="none" stroke="url(#goldGrad)" stroke-width="4" opacity="0.6"/>
+  <path d="M980,540 Q980,880 540,980" fill="none" stroke="url(#goldGrad)" stroke-width="4" opacity="0.6"/>
 
-
-  <!-- TOP: Graduation Cap -->
-  <g transform="translate(540, 130)">
-    <!-- Cap Board -->
-    <path d="M-120,0 L0,-40 L120,0 L0,40 Z" fill="#fff" stroke="#064e58" stroke-width="3"/>
-    <!-- Cap Skull -->
-    <path d="M-50,40 Q-50,90 0,100 Q50,90 50,40" fill="#fff" stroke="#064e58" stroke-width="3"/>
-    
-    <!-- Text on Cap -->
-    <text x="0" y="10" text-anchor="middle" font-size="35" class="font-main" fill="#064e58">٥٧</text>
-    <text x="0" y="80" text-anchor="middle" font-size="25" class="font-sub" fill="#064e58">دفعة</text>
+  <!-- TOP CENTER: Batch Badge -->
+  <g transform="translate(540, 100)" filter="url(#shadow)">
+      <!-- Banner Background -->
+      <path d="M-200,0 H200 L180,120 L0,160 L-180,120 Z" fill="#fff"/>
+      <path d="M-180,10 L180,10 L165,110 L0,145 L-165,110 Z" fill="#05323b" opacity="0.1"/>
+      
+      <!-- Text -->
+      <text x="0" y="70" text-anchor="middle" font-size="50" fill="#0f5c6b" class="font-sub">دفعة</text>
+      <text x="0" y="130" text-anchor="middle" font-size="90" fill="#D4AF37" class="font-main" stroke="#000" stroke-width="1">٦٢</text>
   </g>
 
-  <!-- ICONS - Arranged Radially -->
-  
-  <!-- Top Right: Virus/Cell -->
-  <g transform="translate(850, 200)" fill="none" stroke="#fff" stroke-width="4">
-    <circle cx="0" cy="0" r="30" />
-    <path d="M0,-40 L0,-30 M0,30 L0,40 M-40,0 L-30,0 M30,0 L40,0 M-28,-28 L-21,-21 M28,28 L21,21 M-28,28 L-21,21 M28,-28 L21,-21" />
-  </g>
-
-  <!-- Right: Lungs -->
-  <g transform="translate(950, 540) " fill="none" stroke="#fff" stroke-width="3">
-     <path d="M-20,-30 Q5,-30 10,0 Q30,10 20,40 Q0,50 -5,20 L-5,0" />
-     <path d="M20,-30 Q-5,-30 -10,0 Q-30,10 -20,40 Q0,50 5,20 L5,0" transform="scale(-1,1)" />
-     <path d="M0,-40 L0,-10" stroke-width="5"/>
+  <!-- BOTTOM CENTER: College Name -->
+  <g transform="translate(540, 940)" filter="url(#shadow)">
+       <!-- Ribbon Path -->
+       <path d="M-400,20 Q0,100 400,20 L420,80 Q0,180 -420,80 Z" fill="#fff"/>
+       <path id="textCurve" d="M-350,55 Q0,115 350,55" fill="none"/>
+       <text fill="#05323b" font-size="55" class="font-arabic-fancy" font-weight="bold">
+          <textPath href="#textCurve" startOffset="50%" text-anchor="middle">طب الأزهر بنين القاهرة</textPath>
+       </text>
   </g>
   
-  <!-- Bottom Right: Skeleton -->
-  <g transform="translate(850, 850)" stroke="#fff" stroke-width="3" fill="none">
-    <circle cx="0" cy="-20" r="10" /> <!-- head -->
-    <line x1="0" y1="-10" x2="0" y2="30" /> <!-- spine -->
-    <line x1="-15" y1="0" x2="15" y2="0" /> <!-- shoulders -->
-    <line x1="-15" y1="0" x2="-15" y2="20" /> <!-- arm -->
-    <line x1="15" y1="0" x2="15" y2="20" />
-    <line x1="0" y1="30" x2="-10" y2="50" /> <!-- leg -->
-    <line x1="0" y1="30" x2="10" y2="50" />
-  </g>
-
-  <!-- BOTTOM: Text Banners -->
-  <g transform="translate(540, 920)">
-     <!-- Decorative underline -->
-     <path d="M-200,60 Q0,100 200,60" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-     <!-- Text: College -->
-     <text x="0" y="40" text-anchor="middle" font-size="50" fill="#fff" class="font-sub" filter="url(#glow)">طب الأزهر بنين القاهرة</text>
-     <!-- Text: Senior -->
-     <text x="0" y="110" text-anchor="middle" font-size="60" fill="#fff" class="font-main" letter-spacing="2">Senior</text>
-  </g>
-
-  <!-- Bottom Left: Microscope -->
-  <g transform="translate(200, 850)" stroke="#fff" stroke-width="3" fill="none">
-    <path d="M-10,40 L10,40 L0,-10 Z" /> <!-- Base/Stand -->
-    <path d="M0,-10 L-15,-30" stroke-width="5" /> <!-- Tube -->
-    <circle cx="-18" cy="-33" r="5" /> <!-- Eye piece -->
-  </g>
-
-  <!-- Left: Globe/World -->
-  <g transform="translate(130, 540)" stroke="#fff" stroke-width="3" fill="none">
-    <circle cx="0" cy="0" r="30" />
-    <ellipse cx="0" cy="0" rx="30" ry="10" />
-    <ellipse cx="0" cy="0" rx="10" ry="30" />
-  </g>
-
-  <!-- Top Left: Uterus/Reproductive -->
-  <g transform="translate(230, 200)" stroke="#fff" stroke-width="3" fill="none">
-    <path d="M-20,-10 Q-30,-30 0,-20 Q30,-30 20,-10 Q20,10 0,20 Q-20,10 -20,-10" />
-    <path d="M-20,-10 L-35,-5 M20,-10 L35,-5" />
+  <!-- ICONS: Detailed White Outlines -->
+  
+  <!-- Top Left: Microscope -->
+  <g transform="translate(150, 200) rotate(-15)" stroke="#fff" stroke-width="4" fill="none">
+    <path d="M0,0 L20,60 M-20,60 H40" />
+    <circle cx="10" cy="-10" r="10" />
+    <rect x="-10" y="20" width="40" height="10" />
   </g>
   
-  <!-- Random Formulas/Text floating -->
-  <text x="200" y="400" fill="#fff" opacity="0.6" font-family="Arial" font-weight="bold" font-size="24">10⁷</text>
-  <text x="880" y="400" fill="#fff" opacity="0.6" font-family="Arial" font-weight="bold" font-size="24">5Cs</text>
-  <text x="250" y="650" fill="#fff" opacity="0.6" font-family="Arial" font-weight="bold" font-size="24">5+2</text>
+  <!-- Top Right: DNA -->
+  <g transform="translate(930, 200) rotate(15)" stroke="#fff" stroke-width="4" fill="none">
+      <path d="M-20,-40 Q20,-20 -20,0 Q20,20 -20,40" />
+      <path d="M20,-40 Q-20,-20 20,0 Q-20,20 20,40" />
+      <line x1="-15" y1="-30" x2="15" y2="-30" />
+      <line x1="-5" y1="-10" x2="5" y2="-10" />
+      <line x1="-15" y1="10" x2="15" y2="10" />
+      <line x1="-15" y1="30" x2="15" y2="30" />
+  </g>
+  
+  <!-- Left Side: Kidney/Organ (Medical symbol) -->
+  <g transform="translate(100, 500)" fill="none" stroke="#fff" stroke-width="3">
+     <path d="M10,-20 Q40,-10 40,20 Q40,50 10,40 Q-20,30 -10,-10 Q0,-30 10,-20 Z"/>
+     <path d="M15,10 L35,15 M15,20 L30,30" />
+  </g>
+
+  <!-- Right Side: Heart Rate -->
+  <g transform="translate(980, 500)" stroke="#fff" stroke-width="4" fill="none">
+      <polyline points="-40,0 -20,0 -10,-30 10,30 20,0 40,0" />
+  </g>
+  
+  <!-- Bottom Left: Skel/Bones -->
+  <g transform="translate(150, 850) rotate(15)" stroke="#fff" stroke-width="3">
+      <path d="M-20,-20 L20,20 M20,-20 L-20,20" stroke-linecap="round"/>
+      <circle cx="-25" cy="-25" r="4" fill="#fff" stroke="none"/>
+      <circle cx="25" cy="-25" r="4" fill="#fff" stroke="none"/>
+      <circle cx="-25" cy="25" r="4" fill="#fff" stroke="none"/>
+      <circle cx="25" cy="25" r="4" fill="#fff" stroke="none"/>
+  </g>
+
+  <!-- Bottom Right: Flask -->
+  <g transform="translate(930, 850) rotate(-15)" stroke="#fff" stroke-width="3" fill="none">
+      <path d="M-15,-30 L-15,-10 L-30,30 H30 L15,-10 L15,-30 Z" />
+      <circle cx="0" cy="15" r="5" fill="#fff" opacity="0.5" stroke="none"/>
+      <circle cx="10" cy="25" r="3" fill="#fff" opacity="0.5" stroke="none"/>
+  </g>
+
+  <!-- Floating Text Elements -->
+  <text x="540" y="870" text-anchor="middle" font-size="80" fill="#fff" opacity="0.9" class="font-main" letter-spacing="4" filter="url(#shadow)">SENIOR</text>
+  
+  <!-- Extra flourishes -->
+  <path d="M300,540 Q540,300 780,540 Q540,780 300,540" fill="none" stroke="#fff" stroke-width="1" opacity="0.1"/>
 
 </svg>
