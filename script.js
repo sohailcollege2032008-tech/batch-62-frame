@@ -60,11 +60,11 @@ function setMode(mode) {
     currentMode = mode;
     // Update visual state
     if (mode === 'individual') {
-        btnIndividual.className = "px-6 py-2 rounded-full bg-auc-gold text-auc-dark font-bold hover:bg-yellow-500 transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-yellow-900/20 ring-2 ring-auc-gold ring-offset-2 ring-offset-gray-900";
-        btnGroup.className = "px-6 py-2 rounded-full bg-gray-800 text-gray-300 border border-gray-600 hover:bg-gray-700 transition-all hover:text-white";
+        btnIndividual.className = "px-6 py-2 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all shadow-md";
+        btnGroup.className = "px-6 py-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition-all";
     } else {
-        btnGroup.className = "px-6 py-2 rounded-full bg-auc-gold text-auc-dark font-bold hover:bg-yellow-500 transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-yellow-900/20 ring-2 ring-auc-gold ring-offset-2 ring-offset-gray-900";
-        btnIndividual.className = "px-6 py-2 rounded-full bg-gray-800 text-gray-300 border border-gray-600 hover:bg-gray-700 transition-all hover:text-white";
+        btnGroup.className = "px-6 py-2 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all shadow-md";
+        btnIndividual.className = "px-6 py-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition-all";
     }
     // Future: Switch frame src if we have different frames
     drawCanvas();
