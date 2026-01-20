@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch 62 - Graduation Frame</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'auc-gold': '#C5A059',
+                        'auc-dark': '#1a1a1a',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-auc-dark text-white min-h-screen flex flex-col items-center justify-center p-4">
+
+    <header class="mb-8 text-center animate-fade-in-down">
+        <h1 class="text-5xl md:text-6xl font-serif text-auc-gold mb-2 tracking-wider">Batch 62</h1>
+        <p class="text-xl text-gray-300 font-light">Create your graduation memory</p>
+    </header>
+
+    <main
+        class="w-full max-w-lg bg-gray-900/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700 shadow-2xl animate-fade-in-up">
+
+        <!-- Controls -->
+        <div class="flex justify-center gap-4 mb-6">
+            <button id="btn-individual"
+                class="px-6 py-2 rounded-full bg-auc-gold text-auc-dark font-bold hover:bg-yellow-500 transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-yellow-900/20 ring-2 ring-auc-gold ring-offset-2 ring-offset-gray-900">
+                Individual
+            </button>
+            <button id="btn-group"
+                class="px-6 py-2 rounded-full bg-gray-800 text-gray-300 border border-gray-600 hover:bg-gray-700 transition-all hover:text-white">
+                Group
+            </button>
+        </div>
+
+        <!-- Canvas Container -->
+        <div class="relative w-full aspect-square bg-gray-800 rounded-lg overflow-hidden border-2 border-dashed border-gray-600 hover:border-auc-gold transition-colors group cursor-pointer"
+            id="upload-area">
+
+            <canvas id="canvas" class="hidden w-full h-full object-contain"></canvas>
+
+            <div id="placeholder"
+                class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 group-hover:scale-105 transition-transform duration-300">
+                <svg class="w-16 h-16 text-gray-500 mb-4 group-hover:text-auc-gold transition-colors" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                    </path>
+                </svg>
+                <p class="text-lg font-medium text-gray-300">Click or Drag Photo Here</p>
+                <p class="text-sm text-gray-500 mt-2">Supports JPG, PNG</p>
+            </div>
+
+            <input type="file" id="file-input" accept="image/*" class="hidden">
+        </div>
+
+        <!-- Action Buttons -->
+        <div id="controls" class="hidden mt-6 flex-col gap-4">
+            <div class="flex justify-between items-center gap-4">
+                <button id="btn-change"
+                    class="text-sm text-gray-400 hover:text-white underline decoration-dotted">Change Photo</button>
+                <!-- Could add zoom slider here later -->
+            </div>
+
+            <button id="btn-download"
+                class="w-full py-4 rounded-xl bg-gradient-to-r from-auc-gold to-yellow-600 text-auc-dark font-bold text-lg shadow-lg hover:shadow-yellow-500/20 transition-all transform hover:-translate-y-1 active:translate-y-0">
+                Download Image
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="mt-12 text-gray-600 text-sm">
+        <p>&copy; 2024 Batch 62. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&amp;display=swap');
+      .text-arabic { font-family: 'Amiri', 'Times New Roman', serif; font-weight: bold; }
+    </style>
+    <!-- Gradient for the frame border -->
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f4c5c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#082d36;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main Circular Frame -->
+  <!-- Outer decorative ring -->
+  <circle cx="540" cy="540" r="500" fill="none" stroke="url(#tealGrad)" stroke-width="40" />
+  
+  <!-- Inner wavy decorative ring (simplified path for wavy effect) -->
+  <path d="M540,80 Q640,80 700,140 T940,300 T1000,540 T940,780 T700,940 T540,1000 T380,940 T140,780 T80,540 T140,300 T380,140 T540,80" 
+        fill="none" stroke="#fff" stroke-width="5" opacity="0.5" />
+
+  <!-- Top Banner for Batch Number -->
+  <path d="M340,180 L740,180 L780,280 L300,280 Z" fill="#fff" filter="drop-shadow(0px 5px 5px rgba(0,0,0,0.3))" />
+  <text x="540" y="240" font-size="80" text-anchor="middle" fill="#0f4c5c" class="text-arabic">دفعة ٦٢</text>
+
+  <!-- Bottom Banner for College Name -->
+  <!-- Arc path for text to follow -->
+  <path id="bottomArc" d="M240,880 Q540,1000 840,880" fill="none" />
+  <text font-size="60" fill="#fff" text-anchor="middle" class="text-arabic" letter-spacing="2">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">
+      طب الأزهر بنين القاهرة
+    </textPath>
+  </text>
+
+  <!-- Medical Icons (Simplified representations) -->
+  <!-- Stethoscope (Left) -->
+  <g transform="translate(100, 500) scale(3)">
+    <path d="M10,10 C10,30 40,30 40,10" stroke="#fff" fill="none" stroke-width="2"/>
+    <circle cx="10" cy="10" r="3" fill="#fff"/>
+    <circle cx="40" cy="10" r="3" fill="#fff"/>
+  </g>
+
+  <!-- DNA Helix (Right) -->
+  <g transform="translate(900, 500) scale(3)">
+    <path d="M10,0 Q30,15 10,30 M30,0 Q10,15 30,30" stroke="#fff" stroke-width="2" fill="none"/>
+    <line x1="10" y1="5" x2="30" y2="5" stroke="#fff" stroke-width="1"/>
+    <line x1="10" y1="15" x2="30" y2="15" stroke="#fff" stroke-width="1"/>
+    <line x1="10" y1="25" x2="30" y2="25" stroke="#fff" stroke-width="1"/>
+  </g>
+
+  <!-- Decorative Corners/Elements -->
+  <circle cx="200" cy="200" r="10" fill="#C5A059" />
+  <circle cx="880" cy="200" r="10" fill="#C5A059" />
+  <circle cx="200" cy="880" r="10" fill="#C5A059" />
+  <circle cx="880" cy="880" r="10" fill="#C5A059" />
+
+</svg>
