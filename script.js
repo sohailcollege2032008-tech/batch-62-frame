@@ -66,9 +66,9 @@ function updateFrameSource() {
     // Determine the source file
     let src = '';
     if (currentMode === 'individual') {
-        src = 'assets/AUC FRAME 1.svg';
+        src = 'assets/AUC 1.svg';
     } else {
-        src = 'assets/AUC FRAME 2.svg';
+        src = 'assets/AUC 2.svg';
     }
     // Add cache buster to ensure reload
     frameImage.src = src + '?v=' + Date.now();
